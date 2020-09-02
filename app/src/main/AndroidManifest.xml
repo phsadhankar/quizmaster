@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="othree.quiz_master">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!--<uses-permission android:name="android.permission.MANAGE_DOCUMENTS" />-->
+    <uses-permission android:name="android.permission.FLAG_GRANT_READ_URI_PERMISSION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.ACCESS_BLUETOOTH_SHARE"/>
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name="com.sadhankar.quiz.Splash"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.sadhankar.quiz.MainActivity"
+            android:label="HOME"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="othree.quiz_master.MainActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.sadhankar.quiz.CreateQuizActivity"
+            android:label="Create Quiz"
+            android:parentActivityName="com.sadhankar.quiz.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="othree.quiz_master.CreateQuizActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="othree.quiz_master.com.sadhankar.quiz.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.sadhankar.quiz.ChooseQuiz"
+            android:label="@string/title_activity_choose_quiz"
+            android:parentActivityName="com.sadhankar.quiz.MainActivity"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="othree.quiz_master.ChooseQuiz" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.GET_CONTENT" />
+
+                <data android:scheme="content" />
+                <data android:scheme="file" />
+                <data android:mimeType="*/*" />
+                <data android:scheme="*" />
+                <data android:host="*" />
+                <data android:pathPattern=".*\\.quizfile" />
+                <data android:pathPattern=".*\\..*\\.quizfile" />
+                <data android:pathPattern=".*\\..*\\..*\\.quizfile" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.quizfile" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="othree.quiz_master.com.sadhankar.quiz.MainActivity" />
+        </activity>
+
+        <service
+            android:name="com.sadhankar.quiz.FoindFiles"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity
+            android:name="com.sadhankar.quiz.NormalQuiz"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="othree.quiz_master.com.sadhankar.quiz.ChooseQuiz" />
+        </activity>
+        <activity
+            android:name="com.sadhankar.quiz.PreStartActivity"
+            android:excludeFromRecents="true"
+            android:label="Load Quiz"
+            android:launchMode="singleTask" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.OPENABLE" />
+
+                <data android:scheme="content" />
+                <data android:scheme="file" />
+                <data android:mimeType="*/*" />
+                <data android:scheme="*" />
+                <data android:host="*" />
+                <data android:pathPattern=".*\\.quizfile" />
+                <data android:pathPattern=".*\\..*\\.quizfile" />
+                <data android:pathPattern=".*\\..*\\..*\\.quizfile" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.quizfile" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.sadhankar.quiz.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName="com.sadhankar.quiz.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="othree.quiz_master.com.sadhankar.quiz.MainActivity" />
+        </activity>
+        <activity android:name="com.sadhankar.quiz.QuickQuiz"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="othree.quiz_master.com.sadhankar.quiz.ChooseQuiz" />
+        </activity>
+        <activity
+            android:name="com.sadhankar.quiz.ShareQuiz"
+            android:label="SHARE QUIZ"
+            android:parentActivityName="com.sadhankar.quiz.MainActivity"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="othree.quiz_master.ShareQuiz" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.GET_CONTENT" />
+
+                <data android:scheme="content" />
+                <data android:scheme="file" />
+                <data android:mimeType="*/*" />
+                <data android:scheme="*" />
+                <data android:host="*" />
+                <data android:pathPattern=".*\\.quizfile" />
+                <data android:pathPattern=".*\\..*\\.quizfile" />
+                <data android:pathPattern=".*\\..*\\..*\\.quizfile" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.quizfile" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="othree.quiz_master.com.sadhankar.quiz.MainActivity" />
+        </activity>
+    </application>
+
+</manifest>
